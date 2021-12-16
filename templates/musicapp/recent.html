@@ -33,11 +33,13 @@
   {% endif %}
   
   <!-- Song list -->
-  <div class="row" style="margin-right: 65px;margin-left:-15px;">
+  <div class="row" >
     {% if recent_songs %}
     {% for song in recent_songs %}
-    <div class="col-sm-2 col-md-2" style="padding-bottom: 15px;">
-      <div class="hovereffect">
+    <div class="row row-cols-1 row-cols-md-4">
+      <div class="col mb-4">
+        <div class="card" style="margin-right: 30px;">
+          <div class="hovereffect">
         <img src="{{ song.song_img.url}}" class="img-responsive" height="135" width="135"
           style="border-radius: 8px 8px 8px 8px;">
         <div class="overlay">
@@ -45,6 +47,8 @@
               aria-hidden="true"></i></a>
           <a class="btn btn-outline-light mt-5 mx-1" href="{% url 'detail' song.id %}"><i class="fa fa-info-circle"
               aria-hidden="true"></i></a>
+        </div>
+        </div>
         </div>
       </div>
     </div>
@@ -55,22 +59,27 @@
 <br>
 <br>
 <br>
-<footer class="footer">
-  <div class="player" style="padding-left: 10px;padding-top:10px;background-color: #459dfb;">
-    <div class="left"><img src="{{last_played.song_img.url}}" height="90" width="90"
-        style="border-radius: 10px 10px 10px 10px;"></div>
-    <div class="right">
-      <div class="top">
-        <a class="song" style="margin-left: 15px;color: white;">{{last_played.name}}</a>
-        <a class="artist" style="margin-left: 15px;color:white">{{last_played.album}}</a>
-      </div>
-      <div class="bottom">
-        <audio controls="" autoplay name="media"
-          style="margin-left: 20px;margin-bottom: 10px;width: 1230px;height:30px">
+<footer class="footer" style="margin-bottom: 80px;" >
+  <div class="row" style="background-color: rgb(144, 240, 149); padding: 20px;" >
+    <div class="col-md-2 col-sm-2" ><img src="{{last_played.song_img.url}}" height="100" width="150"
+        style="border-radius: 10px 10px 10px 10px; margin: 30;"></div>
+    <div class="col-md-8 col-sm-8">
+      <div class="top flex">
+        <a class="song" style="margin-left: 15px;color: rgb(126, 22, 22);">{{last_played.name}}</a>
+        <a class="artist" style="margin-right: 35px;color:rgb(71, 28, 189)">{{last_played.album}}</a>
+     
+        {% if first_time %}
+        <audio controls="" name="media" style="margin-left: 10px;margin-bottom: 20px;width: 1230px;height:30px; ">
           <source src="{{last_played.song_file.url}}" type="audio/mpeg"></audio>
+        {% else %}
+        <audio controls="" autoplay name="media"
+          style="margin-left: 10px;margin-bottom: 12px;width: 100%;height:30px; margin-top: 20px;">
+          <source src="{{last_played.song_file.url}}" type="audio/mpeg"></audio>
+        {% endif %}
       </div>
     </div>
   </div>
 </footer>
+
 
 {% endblock body %}
