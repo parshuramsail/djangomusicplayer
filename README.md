@@ -2,7 +2,7 @@
 <!-- >  -->
 
 
-## Live Demo : [Click here](https://beatboxsong.herokuapp.com/)
+## Live Demo : [Click here](https://musicbeatbox.herokuapp.com/)
 #### Home Page
 <img src="website_images/home.png" width="900">
 
